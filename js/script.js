@@ -1,5 +1,5 @@
 var firebaseUrl =
-    "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
+  "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
 
 var korisniciUrl = firebaseUrl + "/korisnici" + ".json";
 
@@ -27,98 +27,102 @@ var festivaliIds = []; //id-jevi iz jedne liste festivala / svih festivala, to b
 var loadButton = document.getElementById("loadButton");
 loadButton.addEventListener("click", loadData);
 
+var printOrganizatoriButton = document.getElementById(
+  "printOrganizatoriButton"
+);
+printOrganizatoriButton.addEventListener("click", printOrganizatori);
+
+function printOrganizatori() {
+  console.log("Organizatori festivala:");
+  for (var id in organizatoriFestivalaIds) {
+    console.log(organizatoriFestivala[id]);
+  }
+}
+
 function loadData() {
-    //loadKorisnici();
-    loadOrganizatoriFestivala();
+  korisniciIds = [];
+  organizatoriFestivalaIds = [];
 
-    console.log("Korisnici ids:");
-    console.log(korisniciIds);
-    console.log("Korisnici:");
-    for (var id in korisniciIds) {
-        console.log(korisnici[id]);
-    }
-    console.log("Organizatori festivala ids:");
-    console.log(organizatoriFestivalaIds);
-    console.log("Organizatori festivala:");
-    for (var id in organizatoriFestivalaIds) {
-        console.log(organizatoriFestivala[id]);
-    }
-    // var request = new XMLHttpRequest();
-    // request.open("GET", organizatoriFestivalaUrl, true);
-    // request.send();
+  loadOrganizatoriFestivala();
+  loadKorisnici();
 
-    // request.onLoad = function() {
-    //     if (request.status === 200) {
-    //         organizatoriFestivala = JSON.parse(request.resposeText);
-    //         for (var id in organizatoriFestivala) {
-    //             organizatoriFestivalaIds.push(id);
-    //             console.log(organizatoriFestivala[id]);
-    //         }
-    //     } else {
-    //         console.error(
-    //             "Error loading organizers data. Status code: " + request.status
-    //         );
-    //     }
-    // };
+  console.log(organizatoriFestivala);
+
+  console.log("Korisnici ids:");
+  console.log(korisniciIds);
+  console.log("Korisnici:");
+  for (var id in korisniciIds) {
+    console.log(korisnici[id]);
+  }
+  console.log("Organizatori festivala ids:");
+  console.log(organizatoriFestivalaIds);
+  console.log("Organizatori festivala:");
+  for (var id in organizatoriFestivalaIds) {
+    console.log(organizatoriFestivala[id]);
+  }
 }
 
 function loadKorisnici() {
-    var request = new XMLHttpRequest();
-    request.open("GET", korisniciUrl, true);
-    request.send();
-    request.onload = function() {
-        if (request.status === 200) {
-            korisnici = JSON.parse(request.responseText);
-            for (var id in korisnici) {
-                korisniciIds.push(id);
-                // if(korisnici[a].tip == "organizator"){
-                //     organizatoriFestivala[a] = korisnici[a];
-                //     organizatoriFestivalaIds.push(a);
-                // }
-            }
-        } else {
-            console.error("Error loading data. Status code: " + request.status);
-        }
-        console.log(korisniciIds);
-    };
+  var request = new XMLHttpRequest();
+  request.open("GET", korisniciUrl, true);
+  request.send();
+  request.onload = function () {
+    if (request.status === 200) {
+      korisnici = JSON.parse(request.responseText);
+      for (var id in korisnici) {
+        korisniciIds.push(id);
+        // if(korisnici[a].tip == "organizator"){
+        //     organizatoriFestivala[a] = korisnici[a];
+        //     organizatoriFestivalaIds.push(a);
+        // }
+      }
+    } else {
+      console.error("Error loading data. Status code: " + request.status);
+    }
+    console.log(korisniciIds);
+  };
 }
 
 function loadOrganizatoriFestivala() {
-    var request = new XMLHttpRequest();
-    request.open("GET", organizatoriFestivalaUrl, false);
-    request.send();
-    console.log("HERE after send");
-    request.onLoad = function() {
-        if (request.status === 200) {
-            console.log("HERE in load");
-            organizatoriFestivala = JSON.parse(request.responseText);
+  var request = new XMLHttpRequest();
+  request.open("GET", organizatoriFestivalaUrl, true);
+  request.send();
+  console.log("HERE after send");
+  request.onLoad = function () {
+    if (request.status === 200) {
+      console.log("HERE in load");
+      organizatoriFestivala = JSON.parse(request.responseText);
 
-            for (var id in organizatoriFestivala) {
-                console.log(id);
-                organizatoriFestivalaIds.push(id);
-                console.log(organizatoriFestivala[id]);
-            }
-        } else {
-            console.error(
-                "Error loading organizers data. Status code: " + request.status
-            );
-        }
-    };
+      for (var id in organizatoriFestivala) {
+        console.log(id);
+        organizatoriFestivalaIds.push(id);
+        console.log(organizatoriFestivala[id]);
+      }
+    } else {
+      console.error(
+        "Error loading organizers data. Status code: " + request.status
+      );
+    }
+  };
 }
 
 function loadFestivali(festivaliId, organizatorId) {
-    var request = new XMLHttpRequest();
-    request.open("GET", firebaseUrl + festivaliId + ".json", true);
-    request.send();
-    request.onload = function() {
-        if (request.status === 200) {
-            festivali = JSON.parse(request.responseText);
-            for (var id in festivali) {
-                festivaliIds.push(id);
-            }
-        } else {
-            console.error("Error loading data. Status code: " + request.status);
-        }
-        //console.log(festivaliIds);
-    };
-} {}
+  var request = new XMLHttpRequest();
+  request.open("GET", firebaseUrl + festivaliId + ".json", true);
+  request.send();
+  request.onload = function () {
+    if (request.status === 200) {
+      console.log("HERE in korisnici - load");
+
+      festivali = JSON.parse(request.responseText);
+      for (var id in festivali) {
+        festivaliIds.push(id);
+      }
+    } else {
+      console.error("Error loading data. Status code: " + request.status);
+    }
+    console.log(festivaliIds);
+  };
+}
+{
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Izmena organizatora festivala</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/index-styles.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Organizacija festivala</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        style="background-color: rgb(89, 180, 255)"
+      >
+        Log in
+      </button>
+    </nav>
+
+    <div class="container">
+      <div class="row mt-3">
+        <h2 class="mx-auto">Izmena organizatora festivala</h2>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-6 col-sm-12 mx-auto">
+          <form>
+            <div class="form-group">
+              <label for="naziv-organizatora">Naziv organizatora:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="naziv-organizatora"
+                required
+              />
+              <small class="text-danger" id="ime-organizatora-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="organizer-logo">Logo:</label>
+              <input
+                type="file"
+                class="form-control-file"
+                id="organizer-logo"
+                required
+              />
+              <small class="text-danger" id="logo-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="adresa-organizatora">Adresa:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="adresa-organizatora"
+                required
+              />
+              <small class="text-danger" id="adresa-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="godina-osnivanja">Godina osnivanja:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="godina-osnivanja"
+                required
+              />
+              <small class="text-danger" id="godina-osnivanja-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="organizer-email">Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="organizer-email"
+                required
+              />
+              <small class="text-danger" id="email-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="kontakt-telefon">Kontakt telefon:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="kontakt-telefon"
+                required
+              />
+              <small class="text-danger" id="kontakt-greska"></small>
+            </div>
+
+            <div class="row mt-5">
+              <h2 class="mx-auto">Festivali</h2>
+
+              <div class="table-responsive mt-3">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th id="naziv-header" class="d-none d-md-table-cell">
+                        Naziv Festivala
+                      </th>
+
+                      <th
+                        id="upravljanje-header"
+                        class="d-none d-md-table-cell"
+                      >
+                        Upravljanje
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>klalue 2</td>
+
+                      <td>
+                        <a
+                          href="index.html"
+                          class="btn-primary d-flex justify-content-center mt-2 rounded"
+                          style="
+                            background-color: rgb(217, 217, 217);
+                            color: black;
+                          "
+                          >obrisi</a
+                        >
+                      </td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <hr />
+            <div class="form-group d-flex justify-content-center mt-4">
+              <div class="row">
+                <div class="col-md-3 mt-1">
+                  <button type="submit" class="btn btn-primary" id="izmeni-btn">
+                    Izmeni
+                  </button>
+                </div>
+                <div class="col-md-3 mt-1">
+                  <button class="btn btn-primary" id="otkazi-btn">
+                    Otkazi
+                  </button>
+                </div>
+                <div class="col-md-6 mt-1">
+                  <button class="btn btn-primary" id="dodaj-festival-btn">
+                    Dodaj festival
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

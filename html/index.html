@@ -1,49 +1,141 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Welcome To The Main Festival</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <head>
+    <title>Organizacija festivala</title>
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      href="bootstrap/css/bootstrap.min.css"
+    />
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
+    <link rel="stylesheet" href="../css/index-styles.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Festival organization</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#">Organizacija festivala</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html" data-toggle="modal" data-target="#loginModal">Login</a
-            >
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-2">
+            <a href="#" class="btn btn-primary">Prijava</a>
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="registration.html"
-              data-toggle="modal"
-              data-target="#registerModal"
-              >Register</a
-            >
+          <li class="nav-item mx-2">
+            <a href="#" class="btn btn-primary">Registracija</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <h1>Hello world</h1>
-    <p>Content goes here.</p>
+    <h3 class="mt-3 mb-3">Organizatori festivala</h3>
+    <div
+      class="container custom-container col-8"
+      style="background-color: blue"
+    >
+      <div class="row">
+        <div class="col-md-3 col-sm-12">
+          <div class="card my-3">
+            <img
+              src="https://source.unsplash.com/1600x900/?nature,trees"
+              class="card-img-top"
+              alt="..."
+              height="50%"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some address 342434, road</p>
+              <a
+                href="organizer.html?organizerId=5"
+                class="btn btn-primary d-flex justify-content-center"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <div class="card my-3">
+            <img
+              src="https://source.unsplash.com/1600x900/?nature,trees"
+              class="card-img-top"
+              alt="..."
+              height="30%"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some address 342434, road</p>
+              <a href="#" class="btn btn-primary">Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <div class="card my-3">
+            <img
+              src="https://source.unsplash.com/1600x900/?nature,trees"
+              class="card-img-top"
+              alt="..."
+              height="30%"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some address 342434, road</p>
+              <a href="#" class="btn btn-primary d-flex justify-content-center"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <div class="card my-3">
+            <img
+              src="https://source.unsplash.com/1600x900/?nature,trees"
+              class="card-img-top"
+              alt="..."
+              height="30%"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some address 342434, road</p>
+              <a href="#" class="btn btn-primary d-flex justify-content-center"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TODO: in code: add card-deck for every 3 divs, and show them in one row
+                    add class top, bottom margin, to cards, as ** card col-md-4 col-xs-12 mt-2 mb-2 -->
+    </div>
 
     <button
       style="width: 150px; height: 40px; color: white; background-color: blue"
       name="loadButton"
       id="loadButton"
     >
-      <!--       onclick="loadData()"  umesto u elementu, Listener da dogadjaj ide u scriptu, da bi ga prepoznao. ELement ima id, a skripta se ucitava nakon njega, tako da ce tada i postojati i skripta i element, pa mogu da bajndujem listener za onCLick event na dogadjaj -->
-      Load Data
+      Load data
     </button>
+
+    <!--       onclick="loadData()"  umesto u elementu, Listener da dogadjaj ide u scriptu, da bi ga prepoznao. ELement ima id, a skripta se ucitava nakon njega, tako da ce tada i postojati i skripta i element, pa mogu da bajndujem listener za onCLick event na dogadjaj -->
+    <!-- Load Data
+    </button>
+        <button id="printOrganizatoriButton">Print organizatori</button> -->
+
     <script src="../js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include jQuery library -->

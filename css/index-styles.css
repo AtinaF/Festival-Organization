@@ -1,0 +1,33 @@
+/* div {
+  margin: 10px;
+} */
+
+/* div.card.col-md-4.col-xs-12 {
+  margin-right: 20px;
+} */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}
+
+/* div.container {
+  display: flex;
+  justify-content: space-between;
+} */
+
+/* div.card {
+  margin-top: 20px;
+  margin-bottom: 30px;
+} */
+
+.custom-container {
+  width: 80%;
+  background-color: crimson;
+}

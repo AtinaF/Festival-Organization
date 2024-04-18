@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - podaci o organizatorima</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/index-styles.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Organizacija festivala</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        style="background-color: rgb(89, 180, 255)"
+      >
+        Log in
+      </button>
+    </nav>
+
+    <div
+      class="container col-md-8 col-sm-12"
+      style="background-color: darkcyan"
+    >
+      <div class="row">
+        <h2 class="mx-auto">Organizatori festivala:</h2>
+
+        <div class="table-responsive table-striped mt-3">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th class="d-none d-md-table-cell">Korisnicko ime</th>
+                <th class="d-none d-md-table-cell">Ime</th>
+                <th class="d-none d-md-table-cell">Prezime</th>
+                <th class="d-none d-md-table-cell">Email</th>
+                <th class="d-none d-md-table-cell">Datum rodjenja</th>
+                <th class="d-none d-md-table-cell">Adresa</th>
+                <th class="d-none d-md-table-cell">Telefon</th>
+                <th class="d-none d-md-table-cell">Zanimanje</th>
+                <th class="d-none d-md-table-cell">Upravljanje</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>hjkhkjhjk@gjg</td>
+                <td>klalue 2</td>
+                <td>Value 3</td>
+                <td>Value 4</td>
+                <td>Value 5</td>
+                <td>Value 6</td>
+                <td>Value 7</td>
+                <td>fjhdskj</td>
+                <td>
+                  <a
+                    href="edit-user.html?userId=10"
+                    class="btn-primary d-flex justify-content-center mt-2 rounded"
+                    style="background-color: rgb(217, 217, 217); color: black"
+                    >izmeni</a
+                  >
+                  <a
+                    href="index.html"
+                    class="btn-primary d-flex justify-content-center mt-2 rounded"
+                    style="background-color: rgb(217, 217, 217); color: black"
+                    >obrisi</a
+                  >
+                </td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

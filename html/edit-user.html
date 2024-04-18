@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Izmena korisnika</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/index-styles.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Organizacija festivala</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        style="background-color: rgb(89, 180, 255)"
+      >
+        Log in
+      </button>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <h2 class="mx-auto">Izmena korisnika</h2>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 col-sm-12 mx-auto">
+          <form>
+            <div class="form-group">
+              <label for="korisnicko-ime">Korisnicko ime:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="korisnicko-ime"
+                required
+              />
+              <small class="text-danger" id="korisnicko-ime-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="ime">Ime:</label>
+              <input type="text" class="form-control" id="ime" required />
+              <small class="text-danger" id="ime-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="prezime">Prezime:</label>
+              <input type="text" class="form-control" id="prezime" required />
+              <small class="text-danger" id="prezime-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" required />
+              <small class="text-danger" id="email-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="datum-rodjenja">Datum rodjenja:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="datum-rodjenja"
+                required
+              />
+              <small class="text-danger" id="datum-rodjenja-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="adresa">Adresa:</label>
+              <input type="text" class="form-control" id="adresa" required />
+              <small class="text-danger" id="adresa-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="telefon">Telefon:</label>
+              <input type="text" class="form-control" id="telefon" required />
+              <small class="text-danger" id="telefon-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="zanimanje">Zanimanje:</label>
+              <input type="text" class="form-control" id="zanimanje" required />
+              <small class="text-danger" id="zanimanje-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="lozinka">Lozinka:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="lozinka"
+                required
+              />
+              <small class="text-danger" id="lozinka-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="lozinka-potvrda">Potvrdi lozinku:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="lozinka-potvrda"
+                required
+              />
+              <small class="text-danger" id="lozinka-potvrda-greska"></small>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+              <div class="row">
+                <div class="col-md-4 mt-1">
+                  <button type="submit" class="btn btn-primary" id="izmeni-btn">
+                    Izmeni
+                  </button>
+                </div>
+                <div class="col-md-4 mt-1">
+                  <button type="submit" class="btn btn-primary" id="otkazi-btn">
+                    Otkazi
+                  </button>
+                </div>
+                <div class="col-md-4 mt-1">
+                  <button type="submit" class="btn btn-primary" id="obrisi-btn">
+                    Obrisi
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
