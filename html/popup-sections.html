@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Organizacija festivala</title>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -11,143 +10,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/index-styles.css" />
+    <title>Popup sections</title>
+    <!-- Additional CSS and other meta tags if needed -->
   </head>
 
   <body>
-    <!-- <iframe src="navbar-element.html" frameborder="0" width="100%" height=" 120px"></iframe> -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="ml-auto">
-        <button
-          class="btn btn-primary"
-          style="background-color: inherit; color: black"
-        >
-          Pera Peric
-        </button>
-        <a class="navbar-brand" style="width: 60%" href="#"
-          >Organizacija festivala</a
-        >
-      </div>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-2 mb-3">
-            <a href="#" class="btn btn-primary" onclick="openLoginPopup()"
-              >Prijava</a
-            >
-          </li>
-          <li class="</li>nav-item mx-2 mb-3">
-            <a
-              href="#"
-              class="btn btn-primary"
-              onclick="openRegistrationPopup()"
-              >Registracija</a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <div
-      class="container custom-container col-8"
-      style="background-color: blue"
-    >
-      <h3 class="mt-3 mb-3 mx-auto col-12 text-center">
-        Organizatori festivala
-      </h3>
-      <div class="row">
-        <div class="col-md-3 col-sm-12">
-          <div class="card my-3">
-            <img
-              src="https://source.unsplash.com/1600x900/?nature,trees"
-              class="card-img-top"
-              alt="..."
-              height="50%"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some address 342434, road</p>
-              <a
-                href="organizer.html?organizerId=5"
-                class="btn btn-primary d-flex justify-content-center"
-                >Details</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-12">
-          <div class="card my-3">
-            <img
-              src="https://source.unsplash.com/1600x900/?nature,trees"
-              class="card-img-top"
-              alt="..."
-              height="30%"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some address 342434, road</p>
-              <a href="#" class="btn btn-primary">Details</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-12">
-          <div class="card my-3">
-            <img
-              src="https://source.unsplash.com/1600x900/?nature,trees"
-              class="card-img-top"
-              alt="..."
-              height="30%"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some address 342434, road</p>
-              <a href="#" class="btn btn-primary d-flex justify-content-center"
-                >Details</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-12">
-          <div class="card my-3">
-            <img
-              src="https://source.unsplash.com/1600x900/?nature,trees"
-              class="card-img-top"
-              alt="..."
-              height="30%"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some address 342434, road</p>
-              <a href="#" class="btn btn-primary d-flex justify-content-center"
-                >Details</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TODO: in code: add card-deck for every 3 divs, and show them in one row
-                    add class top, bottom margin, to cards, as ** card col-md-4 col-xs-12 mt-2 mb-2 -->
-    </div>
-
-    <button
-      style="width: 150px; height: 40px; color: white; background-color: blue"
-      name="loadButton"
-      id="loadButton"
-    >
-      Load data
-    </button>
-
     <div class="popup" id="login-popup">
       <h4>Prijava</h4>
       <form>
@@ -177,7 +44,7 @@
           class="btn-primary btn"
           type="submit"
           value="Prijavi se"
-          onclick="login()"
+          onclick="closeLoginPopup()"
         />
         <button class="btn-primary btn" onclick="closeLoginPopup()">
           Otkazi
@@ -196,11 +63,11 @@
           <!-- First Column -->
           <div class="col-md-6">
             <div class="form-group">
-              <label for="reg-korisnicko-ime">Korisnicko ime:</label>
+              <label for="korisnicko-ime">Korisnicko ime:</label>
               <input
                 type="text"
                 class="form-control"
-                id="reg-korisnicko-ime"
+                id="korisnicko-ime"
                 name="korisnicko-ime"
                 required
               />
@@ -211,11 +78,11 @@
               <input
                 type="text"
                 class="form-control"
-                id="reg-ime"
+                id="ime"
                 name="ime"
                 required
               />
-              <small class="text-danger" id="reg-ime-greska"></small>
+              <small class="text-danger" id="ime-greska"></small>
             </div>
             <div class="form-group">
               <label for="prezime">Prezime:</label>
@@ -230,22 +97,22 @@
             </div>
 
             <div class="form-group">
-              <label for="reg-lozinka">Lozinka:</label>
+              <label for="lozinka">Lozinka:</label>
               <input
                 type="password"
                 class="form-control"
-                id="reg-lozinka"
+                id="lozinka"
                 name="lozinka"
                 required
               />
               <small class="text-danger" id="reg-lozinka-greska"></small>
             </div>
             <div class="form-group">
-              <label for="reg-lozinka-potvrda">Potvrda lozinke:</label>
+              <label for="lozinka-potvrda">Lozinka:</label>
               <input
                 type="password"
                 class="form-control"
-                id="reg-lozinka-potvrda"
+                id="lozinka-potvrda"
                 name="lozinka-potvrda"
                 required
               />
@@ -319,7 +186,7 @@
             type="submit"
             class="btn btn-primary mr-3"
             id="confirm-registration-btn"
-            onclick="register()"
+            onclick="closeRegistrationPopup()"
             value="Registruj se"
           />
           <button
@@ -334,7 +201,5 @@
     </div>
 
     <script src="../js/popup-sections.js"></script>
-    <script src="../js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </body>
 </html>
