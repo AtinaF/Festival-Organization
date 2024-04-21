@@ -27,10 +27,10 @@ var festivaliIds = []; //id-jevi iz jedne liste festivala / svih festivala, to b
 var loadButton = document.getElementById("loadButton");
 loadButton.addEventListener("click", loadData);
 
-var printOrganizatoriButton = document.getElementById(
-  "printOrganizatoriButton"
-);
-printOrganizatoriButton.addEventListener("click", printOrganizatori);
+// var printOrganizatoriButton = document.getElementById(
+//   "printOrganizatoriButton"
+// );
+// printOrganizatoriButton.addEventListener("click", printOrganizatori);
 
 function printOrganizatori() {
   console.log("Organizatori festivala:");
