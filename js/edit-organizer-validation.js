@@ -1,4 +1,5 @@
 function onEditOrganizer(organizerId) {
+  console.log("on edit organizer");
   const nazivOrganizatora = document.getElementById("naziv-organizatora").value;
   const logoOrganizatora = document.getElementById("organizer-logo").value;
   const adresaOrganizatora = document.getElementById(
@@ -91,7 +92,8 @@ function editOrganizer(
   godinaOsnivanja,
   kontaktTelefon
 ) {
-  console.log("edit organizer");
+  console.log("editing organizer");
+  window.location.href = "../html/admin-for-organizer.html";
 }
 
 function onCancel() {
@@ -104,12 +106,12 @@ function onCancel() {
   document.getElementById("email-greska").textContent = "";
   document.getElementById("kontakt-greska").textContent = "";
   console.log("cancel");
-  window.location.href = "admin-for-organizer.html";
+  window.location.href = "../html/admin-for-organizer.html";
 }
 
 function onAddFestival(organizerId) {
   console.log("add festival");
-  window.location.href = "add-festival.html?organizerId=" + organizerId;
+  window.location.href = "../html/add-festival.html?" + organizerId;
 }
 
 function onDeleteFestival(festivalId) {
