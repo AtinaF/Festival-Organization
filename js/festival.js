@@ -53,8 +53,10 @@ function showFestival() {
   var nameRow = document.createElement("div");
   nameRow.classList.add("row", "mt-3");
   var nameHeader = document.createElement("h2");
-  nameHeader.classList.add("mx-auto", "mt-3");
-  nameHeader.innerText = "Naziv festivala";
+  nameHeader.classList.add("mx-auto", "bg-light", "text-center");
+  nameHeader.style.color = "black";
+  nameHeader.style.width = "100%";
+  nameHeader.innerText = festival.naziv;
   nameRow.appendChild(nameHeader);
 
   //TODO round all imgs
@@ -62,34 +64,34 @@ function showFestival() {
   var imgRow = document.createElement("div");
   imgRow.classList.add("row", "mt-3");
   var mainImg = document.createElement("img");
-  mainImg.classList.add(
-    "rounded",
-    "col-md-8",
-    "col-lg-6",
-    "text-center",
-    "mx-auto"
-  );
+  mainImg.classList.add("col-md-8", "col-lg-6", "text-center", "mx-auto");
   mainImg.src = festival.slike[0];
   mainImg.alt = "slika festivala";
+  mainImg.style.borderRadius = "10%";
   imgRow.appendChild(mainImg);
 
   // Image grid
   var imgGridRow = document.createElement("div");
-  imgGridRow.style.backgroundColor = "rgb(255, 152, 152)";
+  // imgGridRow.style.backgroundColor = " rgb(39, 66, 89)";
+  imgGridRow.style.borderRadius = "7%";
   var imgGrid = document.createElement("div");
   imgGrid.classList.add("row", "mt-3", "col-md-8", "mx-auto");
 
   for (var i = 1; i < festival.slike.length; i++) {
     var img = document.createElement("img");
     img.src = festival.slike[i];
-    img.classList.add("rounded", "col-md-4", "mt-2", "col-sm-12");
+    img.classList.add("col-md-4", "mt-2", "mb-2", "col-sm-12");
 
     img.style.minHeight = "220px";
     img.style.maxHeight = "220px";
     img.style.width = "100%";
-    img.style.borderRadius = "10%";
+    img.style.borderRadius = "20%";
     imgGrid.appendChild(img);
   }
+
+  var hrline = document.createElement("hr");
+  hrline.style.border = "0.5px solid white";
+  hrline.style.width = "100%";
   //   imgGrid.innerHTML = `
   //     <img src="img1.jpg" class="rounded col-md-4 mt-2 col-sm-12" alt="...">
   //     <img src="img9.jpg" class="rounded col-md-4 mt-2 col-sm-12 d-block" alt="...">
@@ -98,7 +100,9 @@ function showFestival() {
   //     <img src="img1.jpg" class="rounded col-md-4 mt-2 col-sm-12" alt="...">
   //     <img src="img8.jpg" class="rounded col-md-4 mt-2 col-sm-12 d-block" alt="...">
   //   `;
+
   imgGridRow.appendChild(imgGrid);
+  imgGridRow.appendChild(hrline);
 
   // Description
   var descriptionRow = document.createElement("div");

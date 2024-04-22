@@ -26,29 +26,35 @@
     </nav>
 
     <div
-      class="container col-md-8 col-sm-12"
-      style="background-color: darkcyan"
+      class="container col-md-8 col-sm-8 mt-3"
+      style="background-color: rgb(0, 34, 63); color: white"
     >
       <div class="row">
-        <h2 class="mx-auto">Korisnici:</h2>
+        <h2 class="bg-light text-center" style="width: 100%; color: black">
+          Korisnici:
+        </h2>
 
         <div class="table-responsive table-striped mt-3">
-          <table class="table table-sm">
+          <table class="table table-sm" style="color: white">
             <thead>
               <tr>
                 <th class="d-none d-md-table-cell">Korisnicko ime</th>
                 <th class="d-none d-md-table-cell">Ime</th>
                 <th class="d-none d-md-table-cell">Prezime</th>
                 <th class="d-none d-md-table-cell">Email</th>
-                <th class="d-none d-md-table-cell">Datum rodjenja</th>
-                <th class="d-none d-md-table-cell">Adresa</th>
+                <th class="d-none d-md-table-cell" style="min-width: 10em">
+                  Datum rodjenja
+                </th>
+                <th class="d-none d-md-table-cell" style="min-width: 10em">
+                  Adresa
+                </th>
                 <th class="d-none d-md-table-cell">Telefon</th>
                 <th class="d-none d-md-table-cell">Zanimanje</th>
                 <th class="d-none d-md-table-cell">Upravljanje</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
+            <tbody id="tbody-korisnici">
+              <!-- <tr>
                 <td>kjhjk@gjg</td>
                 <td>klalue 2</td>
                 <td>Value 3</td>
@@ -73,13 +79,13 @@
                   >
                 </td>
               </tr>
-              <!-- Add more rows as needed -->
+              Add more rows as needed -->
             </tbody>
           </table>
         </div>
       </div>
     </div>
-
     <script src="../js/admin-for-user-modals.js"></script>
+    <script src="../js/admin-for-user.js"></script>
   </body>
 </html>

@@ -81,10 +81,27 @@ function onDelete(userId) {
   confirmDeleteButton.addEventListener("click", function () {
     myModal.hide();
     deleteUser(userId);
-    window.location.href = "index.html";
+    //window.location.href = "index.html";
   });
 }
 
 function deleteUser(userId) {
-  console.log("delete user");
+  var firebaseUrl =
+    "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
+  var userUrl = firebaseUrl + "/korisnici/" + userId + ".json";
+
+  var request = new XMLHttpRequest();
+  request.open("DELETE", userUrl, true);
+  request.send();
+  request.onreadystatechange = function () {
+    if (request.readyState != 4) {
+      return;
+    }
+    if (request.status == 200) {
+      console.log("Korisnik je uspesno obrisan");
+      window.location.href = "admin-for-user.html";
+    } else {
+      console.log("Greska prilikom brisanja korisnika");
+    }
+  };
 }

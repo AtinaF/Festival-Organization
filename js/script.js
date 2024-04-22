@@ -3,7 +3,7 @@ var firebaseUrl =
 
 var korisniciUrl = firebaseUrl + "/korisnici" + ".json";
 var organizatoriFestivalaUrl = firebaseUrl + "/organizatoriFestivala" + ".json";
-var festivaliUrl = firebaseUrl + "/festivali" + ".json";
+var korisniciUrl = firebaseUrl + "/festivali" + ".json";
 
 // //ovakav zahtev se blokira sa CORS policy
 // var firebaseGradivniUrl =
@@ -18,8 +18,8 @@ var korisniciIds = [];
 var organizatoriFestivala = {};
 var organizatoriFestivalaIds = [];
 
-var festivali = {};
-var festivaliIds = [];
+var korisnici = {};
+var korisniciIds = [];
 
 // var loadButton = document.getElementById("loadButton");
 // loadButton.addEventListener("click", loadData);
