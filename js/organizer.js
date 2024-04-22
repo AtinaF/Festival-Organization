@@ -1,9 +1,9 @@
 var firebaseUrl =
   "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
 
-var organizatorId = window.location.href.split("?")[1].split("=")[1];
+var festivalId = window.location.href.split("?")[1].split("=")[1];
 var organizatorUrl =
-  firebaseUrl + "/organizatoriFestivala/" + organizatorId + ".json";
+  firebaseUrl + "/organizatoriFestivala/" + festivalId + ".json";
 var festivaliUrl = firebaseUrl + "/festivali/";
 
 var organizator = {};
@@ -16,7 +16,7 @@ Promise.all([loadOrganizator()])
     Promise.all([loadFestivali(organizator.festivali)])
       .then(() => {
         console.log("All festivali data loaded successfully");
-        showOrganizator();
+        showFestival();
       })
       .catch((error) => {
         console.error("Error loading data:", error);
@@ -74,7 +74,7 @@ function loadFestivali(festivaliId) {
   });
 }
 
-function showOrganizator() {
+function showFestival() {
   var organizatorContainer = document.getElementById("organizator-container");
 
   var organizatorNameRow = document.createElement("div");
@@ -210,9 +210,9 @@ function showOrganizator() {
 
     var img = document.createElement("img");
     img.src = festivali[id].slike[0];
-    img.classList.add("card-img-top");
+    // img.classList.add("card-img-top");
     img.alt = "Festival Image";
-    img.height = "30%";
+    // img.height = "30%";
 
     var cardBodyDiv = document.createElement("div");
     cardBodyDiv.classList.add("card-body");
@@ -226,11 +226,15 @@ function showOrganizator() {
     type.innerText = "Tip festivala: " + festivali[id].tip;
 
     var detailsLink = document.createElement("a");
-    detailsLink.href = "festival.html?festivalId=" + id;
+    detailsLink.href =
+      "festival.html?festivalId=" +
+      id +
+      "&festivaliId=" +
+      organizator.festivali;
     detailsLink.classList.add(
       "btn",
       "btn-primary",
-      "dflex",
+      "d-flex",
       "justify-content-center"
     );
     detailsLink.innerText = "Details";
