@@ -13,10 +13,10 @@ var korisniciIds = [];
 Promise.all([loadOrganizator()])
   .then(() => {
     console.log("All data loaded successfully");
-    Promise.all([loadKorisnici(organizator.festivali)])
+    Promise.all([loadFestivali(organizator.festivali)])
       .then(() => {
         console.log("All festivali data loaded successfully");
-        showKorisnici();
+        showFestival();
       })
       .catch((error) => {
         console.error("Error loading data:", error);
@@ -48,7 +48,7 @@ function loadOrganizator() {
   });
 }
 
-function loadKorisnici(festivaliId) {
+function loadFestivali(festivaliId) {
   return new Promise((resolve, reject) => {
     var request = new XMLHttpRequest();
     request.open("GET", korisniciUrl + festivaliId + ".json", true);
@@ -74,7 +74,7 @@ function loadKorisnici(festivaliId) {
   });
 }
 
-function showKorisnici() {
+function showFestival() {
   var organizatorContainer = document.getElementById("organizator-container");
 
   var organizatorNameRow = document.createElement("div");
