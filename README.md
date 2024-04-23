@@ -1,4 +1,8 @@
-# web-dizajn-projekat
-web projekat
+# Festival organization
 
-## podnaslov
+## tehnologije:
+*  js
+*  html
+*  css
+*  bootstrap
+*  firebase
