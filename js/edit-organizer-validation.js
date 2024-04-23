@@ -93,6 +93,40 @@ function editOrganizer(
   kontaktTelefon
 ) {
   console.log("editing organizer");
+  //update data with put method
+  var firebaseUrl =
+    "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
+
+  var organizatorUrl =
+    firebaseUrl + "/organizatoriFestivala/" + organizatorId + ".json";
+  var organizator = {
+    organizerId: {
+      nazivOrganizatora: nazivOrganizatora,
+      email: email,
+      logoOrganizatora: logoOrganizatora,
+      adresaOrganizatora: adresaOrganizatora,
+      godinaOsnivanja: godinaOsnivanja,
+      kontaktTelefon: kontaktTelefon,
+    },
+  };
+  var request = new XMLHttpRequest();
+  request.open("PUT", organizatorUrl, true);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.send(JSON.stringify(organizator));
+  request.onreadystatechange = function () {
+    if (request.readyState === 4) {
+      // done
+      if (request.status === 200) {
+        // success
+        console.log("organizator data updated successfully");
+      } else {
+        console.error(
+          "Error updating organizator data. Status code: " + request.status
+        );
+      }
+    }
+  };
+
   window.location.href = "../html/admin-for-organizer.html";
 }
 
@@ -111,11 +145,11 @@ function onCancel() {
 
 function onAddFestival(organizerId) {
   console.log("add festival");
-  window.location.href = "../html/add-festival.html?" + organizerId;
+  window.location.href = "../html/add-festival.html?organizerId=" + organizerId;
 }
 
-function onDeleteFestival(festivalId) {
-  //   event.preventDefault();
+function onDeleteFestival(festivalId, festivaliId, event) {
+  event.preventDefault();
   // Create the modal container
   const modalContainer = document.createElement("div");
   modalContainer.classList.add("modal");
@@ -196,13 +230,45 @@ function onDeleteFestival(festivalId) {
 
   confirmDeleteButton.addEventListener("click", function () {
     myModal.hide();
-    deleteFestival(festivalId);
-    //window.location.href = "admin-for-organizer.html";
-    // window.location.href = "edit-organizer.html";
-    window.location.reload();
+
+    Promise.all([deleteFestival(festivalId, festivaliId)])
+      .then(() => {
+        console.log("festival deleted successfully");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error deleting festival:", error);
+      });
   });
 }
 
-function deleteFestival(festivalId) {
+function deleteFestival(festivalId, festivaliId) {
   console.log("delete festival");
+  console.log(festivalId);
+
+  var firebaseUrl =
+    "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
+
+  var festivalUrl =
+    firebaseUrl + "/festivali/" + festivaliId + "/" + festivalId + ".json";
+
+  return new Promise((resolve, reject) => {
+    var request = new XMLHttpRequest();
+    request.open("DELETE", festivalUrl, true);
+    request.send();
+    request.onreadystatechange = function () {
+      if (request.readyState === 4) {
+        // done
+        if (request.status === 200) {
+          // success
+          console.log("festival deleted successfully");
+          resolve();
+        } else {
+          reject(
+            "Error deleting festival data. Status code: " + request.status
+          );
+        }
+      }
+    };
+  });
 }

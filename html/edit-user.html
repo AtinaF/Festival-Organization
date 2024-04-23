@@ -25,12 +25,17 @@
       </button>
     </nav>
 
-    <div class="container">
+    <div
+      class="container col-md-6 col-sm-8 mt-3"
+      style="background-color: rgb(0, 34, 63); color: white"
+    >
       <div class="row">
-        <h2 class="mx-auto">Izmena korisnika</h2>
+        <h2 class="bg-light text-center" style="width: 100%; color: black">
+          Izmena korisnika
+        </h2>
       </div>
       <div class="row mt-3">
-        <div class="col-md-6 col-sm-12 mx-auto">
+        <div class="col-md-8 col-sm-12 mx-auto">
           <form>
             <div class="form-group">
               <label for="korisnicko-ime">Korisnicko ime:</label>
@@ -91,34 +96,19 @@
             <div class="form-group d-flex justify-content-center">
               <div class="row">
                 <div class="col-md-4 mt-1">
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    id="izmeni-btn"
-                    onclick="onEdit(10)"
-                  >
+                  <a class="btn btn-primary" href="#" id="izmeni-btn">
                     Izmeni
-                  </button>
+                  </a>
                 </div>
                 <div class="col-md-4 mt-1">
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    id="otkazi-btn"
-                    onclick="onCancel()"
-                  >
+                  <a class="btn btn-primary" href="#" id="otkazi-btn">
                     Otkazi
-                  </button>
+                  </a>
                 </div>
                 <div class="col-md-4 mt-1">
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    id="obrisi-btn"
-                    onclick="onDelete(10)"
-                  >
+                  <a class="btn btn-primary" href="#" id="obrisi-btn">
                     Obrisi
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -127,5 +117,6 @@
       </div>
     </div>
     <script src="../js/edit-user-validation.js"></script>
+    <script src="../js/edit-user.js"></script>
   </body>
 </html>

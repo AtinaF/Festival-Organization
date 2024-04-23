@@ -135,7 +135,7 @@ function showOrganizatori() {
         const upravljanjeCell = document.createElement("td");
 
         const editButton = document.createElement("a");
-        editButton.href = "edit-user.html?organizerId=" + id;
+        editButton.href = "edit-organizer.html?organizerId=" + id;
         // editButton.onclick = editOrganizer(id);
         editButton.className =
             "btn-primary d-flex justify-content-center mt-2 rounded";
