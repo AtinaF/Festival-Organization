@@ -54,7 +54,7 @@ function loadOrganizatorData() {
           );
           otkaziButton.addEventListener("click", () => onCancel());
           dodajFestivalBtn.addEventListener("click", () =>
-            onAddFestival(organizatorId)
+            onAddFestival(organizatorId, organizator.festivali)
           );
           showOrganizatorData();
           resolve();

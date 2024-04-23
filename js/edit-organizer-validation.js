@@ -77,12 +77,6 @@ function onEditOrganizer(organizerId) {
   }
 }
 
-function fillInTheForm(organizerId) {
-  //TODO form
-  //   fetch organizer by Id
-  //   read all info
-}
-
 function editOrganizer(
   organizerId,
   nazivOrganizatora,
@@ -143,9 +137,13 @@ function onCancel() {
   window.location.href = "../html/admin-for-organizer.html";
 }
 
-function onAddFestival(organizerId) {
+function onAddFestival(organizerId, festivaliId) {
   console.log("add festival");
-  window.location.href = "../html/add-festival.html?organizerId=" + organizerId;
+  window.location.href =
+    "../html/add-festival.html?organizerId=" +
+    organizerId +
+    "&festivaliId=" +
+    festivaliId;
 }
 
 function onDeleteFestival(festivalId, festivaliId, event) {

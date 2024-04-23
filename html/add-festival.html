@@ -39,13 +39,18 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div
+      class="container col-md-6 col-sm-8 mt-3"
+      style="background-color: rgb(0, 34, 63); color: white"
+    >
       <div class="row">
-        <h2 class="mx-auto">Dodavanje festivala</h2>
+        <h2 class="bg-light text-center" style="width: 100%; color: black">
+          Dodavanje festivala
+        </h2>
       </div>
 
       <div class="row mt-3">
-        <div class="col-md-6 col-sm-12 mx-auto">
+        <div class="col-md-8 col-sm-12 mx-auto">
           <form>
             <div class="form-group">
               <label for="naziv-festivala">Naziv festivala:</label>
@@ -60,34 +65,36 @@
 
             <div class="form-group">
               <label for="opis">Opis:</label>
-              <textarea
-                class="form-control"
-                id="opis"
-                rows="3"
-                required
-              ></textarea>
+              <textarea class="form-control" id="opis" rows="3"></textarea>
               <small class="text-danger" id="opis-greska"></small>
             </div>
 
             <div class="form-group">
               <label for="tip-festivala">Tip festivala:</label>
-              <select class="form-control" id="tip-festivala" required>
-                <option value="1">Tip 1</option>
+              <select class="form-control" id="tip-festivala">
+                <option value="Muzicki">Muzicki</option>
+                <option value="Umetnicki">Umetnicki</option>
+
+                <option value="Filmski">Filmski</option>
+                <option value="Gastronomski">Gastronomski</option>
+                <option value="Edukativni">Edukativni</option>
               </select>
               <small class="text-danger" id="tip-festivala-greska"></small>
             </div>
 
             <div class="form-group">
               <label for="prevoz">Prevoz:</label>
-              <select class="form-control" id="prevoz" required>
-                <option value="1">Autobus</option>
+              <select class="form-control" id="prevoz">
+                <option value="Autobus">Autobus</option>
+                <option value="Avion">Avion</option>
+                <option value="Sopstveni prevoz">Sopstveni prevoz</option>
               </select>
               <small class="text-danger" id="prevoz-greska"></small>
             </div>
 
             <div class="form-group">
               <label for="cena">Cena:</label>
-              <input type="number" class="form-control" id="cena" required />
+              <input type="number" class="form-control" id="cena" />
               <small class="text-danger" id="cena-greska"></small>
             </div>
 
@@ -97,35 +104,23 @@
                 type=" number"
                 class="form-control"
                 id="maksimalno-osoba"
-                required
               />
-              <small class="text-danger" id="maksimalno-osoba-greska "></small>
+              <small class="text-danger" id="maksimalno-osoba-greska"></small>
             </div>
 
             <div class="form-group">
               <label for="slika ">Slika:</label>
-              <input
-                type="file"
-                class="form-control-file"
-                id="slika"
-                required
-              />
-              <small class="text-danger" id="slika-greska "></small>
+              <input type="file" class="form-control-file" id="slika" />
+              <small class="text-danger" id="slika-greska"></small>
             </div>
 
             <div class="form-group d-flex justify-content-center">
               <div class="row">
                 <div class="col-md-6 mt-1">
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    onclick="addFestival()"
-                  >
-                    Dodaj
-                  </button>
+                  <a class="btn btn-primary" id="dodaj-btn"> Dodaj </a>
                 </div>
                 <div class="col-md-6 mt-1">
-                  <a class="btn btn-primary" href="index.html">Otkazi</a>
+                  <a class="btn btn-primary" id="otkazi-btn">Otkazi</a>
                 </div>
               </div>
             </div>
