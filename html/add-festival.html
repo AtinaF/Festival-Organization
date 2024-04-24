@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer" />
+
     <title>Dodavanje festivala</title>
     <link
       rel="stylesheet"
@@ -15,7 +17,6 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Organizacija festivala</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -27,13 +28,32 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="ml-auto">
+        <a class="navbar-brand" style="width: 60%" href="index.html"
+          >Organizacija festivala</a
+        >
+        <span
+          class="btn btn-primary"
+          style="background-color: inherit; color: black; border: none"
+        >
+          <!-- Pera Peric -->
+        </span>
+      </div>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-2">
-            <a href="#" class="btn btn-primary">Log in</a>
+          <li class="nav-item mx-2 mb-3">
+            <a href="#" class="btn btn-primary" onclick="openLoginPopup()"
+              >Prijava</a
+            >
           </li>
-          <li class="nav-item mx-2">
-            <a href="#" class="btn btn-primary">Sign up</a>
+          <li class="</li>nav-item mx-2 mb-3">
+            <a
+              href="#"
+              class="btn btn-primary"
+              onclick="openRegistrationPopup()"
+              >Registracija</a
+            >
           </li>
         </ul>
       </div>
@@ -128,6 +148,193 @@
         </div>
       </div>
     </div>
+    <div class="popup" id="login-popup">
+      <h4>Prijava</h4>
+      <form>
+        <div class="form-group">
+          <label for="korisnicko-ime">Korisnicko ime:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="korisnicko-ime"
+            name="korisnicko-ime"
+            required
+          />
+          <small class="text-danger" id="korisnicko-ime-greska"></small>
+        </div>
+        <div class="form-group">
+          <label for="password">Lozinka:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="lozinka"
+            name="lozinka"
+            required
+          />
+          <small class="text-danger" id="lozinka-greska"></small>
+        </div>
+        <input
+          class="btn-primary btn"
+          type="submit"
+          value="Prijavi se"
+          onclick="login()"
+        />
+        <button class="btn-primary btn" onclick="closeLoginPopup()">
+          Otkazi
+        </button>
+      </form>
+    </div>
+    <!-- 
+    <a class="btn btn-primary" name="loadButton" id="loadButton" href="#">
+      Load data
+    </a> -->
+
+    <div class="popup" id="registration-popup">
+      <h4 class="mb-2">Registracija</h4>
+      <form>
+        <div class="row">
+          <!-- First Column -->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="reg-korisnicko-ime">Korisnicko ime:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="reg-korisnicko-ime"
+                name="korisnicko-ime"
+                required
+              />
+              <small class="text-danger" id="reg-korisnicko-ime-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="ime">Ime:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="reg-ime"
+                name="ime"
+                required
+              />
+              <small class="text-danger" id="reg-ime-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="prezime">Prezime:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="prezime"
+                name="prezime"
+                required
+              />
+              <small class="text-danger" id="prezime-greska"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-lozinka">Lozinka:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="reg-lozinka"
+                name="lozinka"
+                required
+              />
+              <small class="text-danger" id="reg-lozinka-greska"></small>
+            </div>
+            <div class="form-group">
+              <label for="reg-lozinka-potvrda">Potvrda lozinke:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="reg-lozinka-potvrda"
+                name="lozinka-potvrda"
+                required
+              />
+              <small
+                class="text-danger"
+                id="reg-lozinka-potvrda-greska"
+              ></small>
+            </div>
+          </div>
+
+          <!-- Second Column -->
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  required
+                />
+                <small class="text-danger" id="email-greska"></small>
+              </div>
+              <div class="form-group">
+                <label for="datum-rodjenja">Datum rodjenja:</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  name="datum-rodjenja"
+                  id="datum-rodjenja"
+                />
+                <small class="text-danger" id="datum-rodjenja-greska"></small>
+              </div>
+              <div class="form-group">
+                <label for="adresa">Adresa:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="adresa"
+                  id="adresa"
+                />
+                <small class="text-danger" id="adresa-greska"></small>
+              </div>
+              <div class="form-group">
+                <label for="telefon">Telefon:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="telefon"
+                  id="telefon"
+                />
+                <small class="text-danger" id="telefon-greska"></small>
+              </div>
+              <div class="form-group">
+                <label for="zanimanje">Zanimanje:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="zanimanje"
+                  id="zanimanje"
+                />
+                <small class="text-danger" id="zanimanje-greska"></small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <input
+            type="submit"
+            class="btn btn-primary mr-3"
+            id="confirm-registration-btn"
+            onclick="register()"
+            value="Registruj se"
+          />
+          <button
+            class="btn btn-primary ml-3"
+            id="cancel-registration-btn"
+            onclick="closeRegistrationPopup()"
+          >
+            Otkazi
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script src="../js/popup-sections-validation.js"></script>
+
     <script src="../js/add-festival-validation.js"></script>
   </body>
 </html>

@@ -11,7 +11,6 @@ justify-content: center;
 }
 */
 
-
 /* .popup-btn {
   background-color: #f1f1f1;
   border: none;
@@ -25,34 +24,34 @@ justify-content: center;
   cursor: pointer;
 } */
 
-
 /* 
 * {
     font-family: "Helvetica Neue", sans-serif;
 } */
 
 .popup {
-    min-width: 400px;
-    background-color: rgb(0, 61, 114);
-    padding: 20px;
-    border-radius: 6px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.1);
-    text-align: center;
-    color: white;
-    visibility: hidden;
-    transition: transform 0.4s, top 0.4s;
-    box-shadow: 3px 4px rgba(255, 255, 255, 0.555);
+  min-width: 400px;
+  background-color: rgb(0, 61, 114);
+  padding: 20px;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  color: white;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+  box-shadow: 3px 4px rgba(255, 255, 255, 0.555);
+  z-index: 1000;
+  /* Ensure the pop-up is above other content */
 }
 
 .open-popup {
-    visibility: visible;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
 }
-
 
 /* .popup img {
   width: 100%;
@@ -68,31 +67,31 @@ justify-content: center;
 } */
 
 body {
-    /* background-image: url("../pictures/paper.jpg"); */
-    background-color: rgb(0, 61, 114);
-    background-size: cover;
-    background-repeat: repeat;
-    background-position: center;
-    height: 100vh;
-    background-attachment: fixed;
+  /* background-image: url("../pictures/paper.jpg"); */
+  background-color: rgb(0, 61, 114);
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+  height: 100vh;
+  background-attachment: fixed;
 }
 
-div.card>img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    min-height: 220px;
-    max-height: 220px;
-    margin-top: -25px;
-    border-radius: 10%;
-    box-shadow: 0 2px 5px rgba(9, 0, 54, 0.555);
+div.card > img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  min-height: 220px;
+  max-height: 220px;
+  margin-top: -25px;
+  border-radius: 10%;
+  box-shadow: 0 2px 5px rgba(9, 0, 54, 0.555);
 }
 
 @media (max-width: 576px) {
-    img {
-        max-height: 150px;
-        /* Adjust the maximum height for small screens */
-        margin-top: -15px;
-        /* Adjust margin for small screens */
-    }
+  img {
+    max-height: 150px;
+    /* Adjust the maximum height for small screens */
+    margin-top: -15px;
+    /* Adjust margin for small screens */
+  }
 }
