@@ -259,11 +259,6 @@ function createDetailsButton(id) {
 }
 
 function DetailsClicked(festivalId) {
-  // detailsLink.href =
-  //   "festival.html?festivalId=" +
-  //   id +
-  //   "&festivaliId=" +
-  //   organizator.festivali;
   localStorage.setItem("festivalId", festivalId);
   localStorage.setItem("festivaliId", organizator.festivali);
   window.location.href = "festival.html";

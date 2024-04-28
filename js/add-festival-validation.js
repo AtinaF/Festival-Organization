@@ -1,12 +1,5 @@
-var organizatorId = window.location.href
-  .split("?")[1]
-  .split("&")[0]
-  .split("=")[1];
-
-var festivaliId = window.location.href
-  .split("?")[1]
-  .split("&")[1]
-  .split("=")[1];
+var organizatorId = localStorage.getItem("organizerId");
+var festivaliId = localStorage.getItem("festivaliId");
 
 addListeners();
 

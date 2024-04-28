@@ -89,14 +89,6 @@ function showFestival() {
   var hrline = document.createElement("hr");
   hrline.style.border = "0.5px solid white";
   hrline.style.width = "100%";
-  //   imgGrid.innerHTML = `
-  //     <img src="img1.jpg" class="rounded col-md-4 mt-2 col-sm-12" alt="...">
-  //     <img src="img9.jpg" class="rounded col-md-4 mt-2 col-sm-12 d-block" alt="...">
-  //     <img src="img1.jpg" class="rounded col-md-4 mt-2 col-sm-12 d-block" alt="...">
-  //     <img src="img9.jpg" class="rounded col-md-4 mt-2 col-sm-12" alt="...">
-  //     <img src="img1.jpg" class="rounded col-md-4 mt-2 col-sm-12" alt="...">
-  //     <img src="img8.jpg" class="rounded col-md-4 mt-2 col-sm-12 d-block" alt="...">
-  //   `;
 
   imgGridRow.appendChild(imgGrid);
   imgGridRow.appendChild(hrline);

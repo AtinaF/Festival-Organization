@@ -125,14 +125,7 @@ function showOrganizatori() {
 
     const upravljanjeCell = document.createElement("td");
 
-    const editButton = document.createElement("a");
-    editButton.href = "edit-organizer.html?organizerId=" + id;
-    // editButton.onclick = editOrganizer(id);
-    editButton.className =
-      "btn-primary d-flex justify-content-center mt-2 rounded";
-    editButton.style.backgroundColor = "rgb(217, 217, 217)";
-    editButton.style.color = "black";
-    editButton.textContent = "izmeni";
+    const editButton = createEditButton(id);
     upravljanjeCell.appendChild(editButton);
 
     const deleteButton = createDeleteButton(id);
@@ -166,4 +159,25 @@ function createDeleteButton(id) {
     onDelete(id);
   });
   return deleteButton;
+}
+
+function createEditButton(id) {
+  const editButton = document.createElement("button");
+  editButton.className =
+    "btn-primary d-flex justify-content-center mt-2 rounded";
+  editButton.style.backgroundColor = "rgb(217, 217, 217)";
+  editButton.style.color = "black";
+  editButton.textContent = "obrisi";
+  editButton.textContent = "izmeni";
+  editButton.style.width = "100%";
+  editButton.addEventListener("click", () => {
+    editOrganizer(id);
+  });
+
+  return editButton;
+}
+
+function editOrganizer(id) {
+  localStorage.setItem("organizerId", id);
+  window.location.href = "edit-organizer.html";
 }

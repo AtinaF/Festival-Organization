@@ -1,10 +1,11 @@
 var firebaseUrl =
   "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
 
-var korisnikId = window.location.href.split("?")[1].split("=")[1].split("#")[0];
-var korisnikUrl =
-  firebaseUrl + "/organizatoriFestivala/" + korisnikId + ".json";
-var korisnik = {};
+// var korisnikId = window.location.href.split("?")[1].split("=")[1].split("#")[0];
+var organizatorId = localStorage.getItem("organizerId");
+var organizatorUrl =
+  firebaseUrl + "/organizatoriFestivala/" + organizatorId + ".json";
+var organizator = {};
 
 var festivaliUrl;
 var festivaliIds = [];
@@ -21,18 +22,18 @@ Promise.all([loadKorisnikData()])
 function loadKorisnikData() {
   return new Promise((resolve, reject) => {
     var request = new XMLHttpRequest();
-    request.open("GET", korisnikUrl, true);
+    request.open("GET", organizatorUrl, true);
     request.send();
     request.onreadystatechange = function () {
       if (request.readyState === 4) {
         // done
         if (request.status === 200) {
           // success
-          korisnik = JSON.parse(request.responseText);
+          organizator = JSON.parse(request.responseText);
           console.log("organizator data loaded successfully");
-          console.log(korisnik);
+          console.log(organizator);
           festivaliUrl =
-            firebaseUrl + "/festivali/" + korisnik.festivali + ".json";
+            firebaseUrl + "/festivali/" + organizator.festivali + ".json";
 
           Promise.all([loadFestivali()])
             .then(() => {
@@ -47,11 +48,11 @@ function loadKorisnikData() {
           var otkaziButton = document.getElementById("otkazi-btn");
           var dodajFestivalBtn = document.getElementById("dodaj-festival-btn");
           izmeniButton.addEventListener("click", () =>
-            onEditOrganizer(korisnikId)
+            onEditOrganizer(organizatorId)
           );
           otkaziButton.addEventListener("click", () => onCancel());
           dodajFestivalBtn.addEventListener("click", () =>
-            onAddFestival(korisnikId, korisnik.festivali)
+            onAddFestival(organizatorId, organizator.festivali)
           );
           showOrganizatorData();
           resolve();
@@ -76,13 +77,13 @@ function showOrganizatorData() {
 
   // console.log(organizator);
 
-  nazivOrganizatora.value = korisnik.naziv;
+  nazivOrganizatora.value = organizator.naziv;
   //   logo.value = organizator.logo;
-  logoImg.src = korisnik.logo;
-  adresa.value = korisnik.adresa;
-  godinaOsnivanja.value = korisnik.godinaOsnivanja;
-  email.value = korisnik.email;
-  kontaktTelefon.value = korisnik.kontaktTelefon;
+  logoImg.src = organizator.logo;
+  adresa.value = organizator.adresa;
+  godinaOsnivanja.value = organizator.godinaOsnivanja;
+  email.value = organizator.email;
+  kontaktTelefon.value = organizator.kontaktTelefon;
 }
 
 function showFestivali() {
@@ -98,7 +99,7 @@ function showFestivali() {
     tr.appendChild(tdNazivFestivala);
 
     const tdUpravljanje = document.createElement("td");
-    const obrisiFestivalButton = createButton(id, korisnik.festivali);
+    const obrisiFestivalButton = createButton(id, organizator.festivali);
 
     tdUpravljanje.appendChild(obrisiFestivalButton);
     tr.appendChild(tdUpravljanje);
@@ -188,7 +189,7 @@ function onEditOrganizer(organizerId) {
   if (logoOrganizatora.files.length > 0) {
     logoPath = logoOrganizatora.files[0].name;
   } else {
-    logoPath = korisnik.logo;
+    logoPath = organizator.logo;
   }
 
   if (adresaOrganizatora.trim() === "") {
@@ -227,7 +228,7 @@ function onEditOrganizer(organizerId) {
     kontaktTelefonGreska.textContent = "";
   }
 
-  var festivaliId = korisnik.festivali;
+  var festivaliId = organizator.festivali;
 
   if (isValid) {
     editOrganizer(
@@ -305,12 +306,9 @@ function onCancel() {
 }
 
 function onAddFestival(organizerId, festivaliId) {
-  console.log("add festival");
-  window.location.href =
-    "../html/add-festival.html?organizerId=" +
-    organizerId +
-    "&festivaliId=" +
-    festivaliId;
+  localStorage.setItem("organizerId", organizerId);
+  localStorage.setItem("festivaliId", festivaliId);
+  window.location.href = "../html/add-festival.html";
 }
 
 function onDeleteFestival(festivalId, festivaliId, event) {
