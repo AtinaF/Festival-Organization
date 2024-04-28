@@ -170,11 +170,11 @@ function onEditOrganizer(organizerId) {
     "naziv-organizatora-greska"
   );
   // const logoOrganizatoraGreska = document.getElementById("logo-greska");
-  const adresaGreska = document.getElementById("adresa-greska");
+  const adresaGreska = document.getElementById("adresa-greska-edit");
   const godinaOsnivanjaGreska = document.getElementById(
     "godina-osnivanja-greska"
   );
-  const emailGreska = document.getElementById("email-greska");
+  const emailGreska = document.getElementById("email-greska-edit");
   const kontaktTelefonGreska = document.getElementById("kontakt-greska");
 
   let isValid = true;

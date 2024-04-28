@@ -1,6 +1,8 @@
 var firebaseUrl =
   "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
-var korisnikId = window.location.href.split("?")[1].split("=")[1];
+
+var korisnikId = localStorage.getItem("korisnikId");
+
 var korisnikUrl = firebaseUrl + "/korisnici/" + korisnikId + ".json";
 
 var korisnik = {};
@@ -26,13 +28,6 @@ function loadKorisnikData() {
           korisnik = JSON.parse(request.responseText);
 
           console.log("Korisnik data loaded successfully");
-          //   var izmeniButton = document.getElementById("izmeni-btn");
-          //   var otkaziButton = document.getElementById("otkazi-btn");
-          //   var obrisiButton = document.getElementById("obrisi-btn");
-
-          //   izmeniButton.addEventListener("onclick", () => onEdit(korisnikId));
-          //   otkaziButton.addEventListener("onclick", () => onCancel);
-          //   obrisiButton.addEventListener("onclick", () => onDelete());
 
           showOrganizatorData();
           resolve(); // Resolve the promise
@@ -45,16 +40,16 @@ function loadKorisnikData() {
 }
 
 function showOrganizatorData() {
-  var korisnickoIme = document.getElementById("korisnicko-ime");
-  var ime = document.getElementById("ime");
-  var prezime = document.getElementById("prezime");
-  var email = document.getElementById("email");
-  var datumRodjenja = document.getElementById("datum-rodjenja");
-  var adresa = document.getElementById("adresa");
-  var telefon = document.getElementById("telefon");
-  var zanimanje = document.getElementById("zanimanje");
-  var lozinka = document.getElementById("lozinka");
-  var potvrdaLozinke = document.getElementById("lozinka-potvrda");
+  var korisnickoIme = document.getElementById("korisnicko-ime-edit");
+  var ime = document.getElementById("ime-edit");
+  var prezime = document.getElementById("prezime-edit");
+  var email = document.getElementById("email-edit");
+  var datumRodjenja = document.getElementById("datum-rodjenja-edit");
+  var adresa = document.getElementById("adresa-edit");
+  var telefon = document.getElementById("telefon-edit");
+  var zanimanje = document.getElementById("zanimanje-edit");
+  var lozinka = document.getElementById("lozinka-edit");
+  var potvrdaLozinke = document.getElementById("lozinka-potvrda-edit");
 
   console.log(korisnik);
 
@@ -70,34 +65,33 @@ function showOrganizatorData() {
   potvrdaLozinke.value = korisnik.lozinka;
 }
 
-// var firebaseUrl =
-//   "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
-// var korisnikId = window.location.href.split("?")[1].split("=")[1];
-// var korisnikUrl = firebaseUrl + "/korisnici/" + korisnikId + ".json";
+function onEdit() {
+  const korisnickoIme = document.getElementById("korisnicko-ime-edit").value;
+  const ime = document.getElementById("ime-edit").value;
+  const prezime = document.getElementById("prezime-edit").value;
+  const email = document.getElementById("email-edit").value;
+  const datumRodjenja = document.getElementById("datum-rodjenja-edit").value;
+  const adresa = document.getElementById("adresa-edit").value;
+  const telefon = document.getElementById("telefon-edit").value;
+  const zanimanje = document.getElementById("zanimanje-edit").value;
+  const lozinka = document.getElementById("lozinka-edit").value;
+  const potvrdaLozinke = document.getElementById("lozinka-potvrda-edit").value;
 
-function onEdit(userId) {
-  const korisnickoIme = document.getElementById("korisnicko-ime").value;
-  const ime = document.getElementById("ime").value;
-  const prezime = document.getElementById("prezime").value;
-  const email = document.getElementById("email").value;
-  const datumRodjenja = document.getElementById("datum-rodjenja").value;
-  const adresa = document.getElementById("adresa").value;
-  const telefon = document.getElementById("telefon").value;
-  const zanimanje = document.getElementById("zanimanje").value;
-  const lozinka = document.getElementById("lozinka").value;
-  const potvrdaLozinke = document.getElementById("lozinka-potvrda").value;
-
-  const korisnickoImeGreska = document.getElementById("korisnicko-ime-greska");
-  const imeGreska = document.getElementById("ime-greska");
-  const prezimeGreska = document.getElementById("prezime-greska");
-  const emailGreska = document.getElementById("email-greska");
-  const datumRodjenjaGreska = document.getElementById("datum-rodjenja-greska");
-  const adresaGreska = document.getElementById("adresa-greska");
-  const telefonGreska = document.getElementById("telefon-greska");
-  const zanimanjeGreska = document.getElementById("zanimanje-greska");
-  const lozinkaGreska = document.getElementById("lozinka-greska");
+  const korisnickoImeGreska = document.getElementById(
+    "korisnicko-ime-greska-edit"
+  );
+  const imeGreska = document.getElementById("ime-greska-edit");
+  const prezimeGreska = document.getElementById("prezime-greska-edit");
+  const emailGreska = document.getElementById("email-greska-edit");
+  const datumRodjenjaGreska = document.getElementById(
+    "datum-rodjenja-greska-edit"
+  );
+  const adresaGreska = document.getElementById("adresa-greska-edit");
+  const telefonGreska = document.getElementById("telefon-greska-edit");
+  const zanimanjeGreska = document.getElementById("zanimanje-greska-edit");
+  // const lozinkaGreska = document.getElementById("lozinka-greska-edit");
   const potvrdaLozinkeGreska = document.getElementById(
-    "lozinka-potvrda-greska"
+    "lozinka-potvrda-greska-edit"
   );
 
   let valid = true;
@@ -249,7 +243,7 @@ function addListeners() {
   var obrisiButton = document.getElementById("obrisi-btn");
 
   izmeniButton.addEventListener("click", () => {
-    onEdit(korisnikId);
+    onEdit();
   });
 
   otkaziButton.addEventListener("click", () => {
@@ -257,7 +251,7 @@ function addListeners() {
   });
 
   obrisiButton.addEventListener("click", () => {
-    onDelete(korisnikId);
+    onDelete();
   });
 }
 

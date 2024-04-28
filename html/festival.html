@@ -42,10 +42,10 @@
         </span>
       </div>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNav ">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-2 mb-3">
-            <a href="#" class="btn btn-primary" onclick="openLoginPopup()"
+            <a href="#" class="btn btn-primary" onclick="openLoginPopup() "
               >Prijava</a
             >
           </li>
@@ -71,94 +71,58 @@
 
     <div class="popup" id="login-popup">
       <h4>Prijava</h4>
-      <form>
+      <form id="login-form">
         <div class="form-group">
           <label for="korisnicko-ime">Korisnicko ime:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="korisnicko-ime"
-            name="korisnicko-ime"
-            required
-          />
+          <input type="text" class="form-control" id="korisnicko-ime" />
           <small class="text-danger" id="korisnicko-ime-greska"></small>
         </div>
         <div class="form-group">
           <label for="password">Lozinka:</label>
-          <input
-            type="password"
-            class="form-control"
-            id="lozinka"
-            name="lozinka"
-            required
-          />
+          <input type="password" class="form-control" id="lozinka" />
           <small class="text-danger" id="lozinka-greska"></small>
         </div>
-        <input
-          class="btn-primary btn"
-          type="submit"
-          value="Prijavi se"
-          onclick="login()"
-        />
+        <div class="row">
+          <span
+            class="mx-auto justify-content-center mb-3"
+            style="color: white"
+            id="login-success-indicator"
+          ></span>
+        </div>
+        <button class="btn-primary btn" value="Prijavi se" onclick="login()">
+          Prijavi se
+        </button>
         <button class="btn-primary btn" onclick="closeLoginPopup()">
           Otkazi
         </button>
       </form>
     </div>
-    <!-- 
-    <a class="btn btn-primary" name="loadButton" id="loadButton" href="#">
-      Load data
-    </a> -->
 
     <div class="popup" id="registration-popup">
       <h4 class="mb-2">Registracija</h4>
-      <form>
+      <form id="registration-form">
         <div class="row">
           <!-- First Column -->
           <div class="col-md-6">
             <div class="form-group">
               <label for="reg-korisnicko-ime">Korisnicko ime:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="reg-korisnicko-ime"
-                name="korisnicko-ime"
-                required
-              />
+              <input type="text" class="form-control" id="reg-korisnicko-ime" />
               <small class="text-danger" id="reg-korisnicko-ime-greska"></small>
             </div>
             <div class="form-group">
               <label for="ime">Ime:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="reg-ime"
-                name="ime"
-                required
-              />
+              <input type="text" class="form-control" id="reg-ime" />
               <small class="text-danger" id="reg-ime-greska"></small>
             </div>
             <div class="form-group">
               <label for="prezime">Prezime:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="prezime"
-                name="prezime"
-                required
-              />
+              <input type="text" class="form-control" id="prezime" />
               <small class="text-danger" id="prezime-greska"></small>
             </div>
 
             <div class="form-group">
               <label for="reg-lozinka">Lozinka:</label>
-              <input
-                type="password"
-                class="form-control"
-                id="reg-lozinka"
-                name="lozinka"
-                required
-              />
+              <input type="password" class="form-control" id="reg-lozinka" />
               <small class="text-danger" id="reg-lozinka-greska"></small>
             </div>
             <div class="form-group">
@@ -167,8 +131,6 @@
                 type="password"
                 class="form-control"
                 id="reg-lozinka-potvrda"
-                name="lozinka-potvrda"
-                required
               />
               <small
                 class="text-danger"
@@ -182,67 +144,49 @@
             <div class="form-group">
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                  required
-                />
+                <input type="email" class="form-control" id="email" />
                 <small class="text-danger" id="email-greska"></small>
               </div>
               <div class="form-group">
                 <label for="datum-rodjenja">Datum rodjenja:</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  name="datum-rodjenja"
-                  id="datum-rodjenja"
-                />
+                <input type="date" class="form-control" id="datum-rodjenja" />
                 <small class="text-danger" id="datum-rodjenja-greska"></small>
               </div>
               <div class="form-group">
                 <label for="adresa">Adresa:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="adresa"
-                  id="adresa"
-                />
+                <input type="text" class="form-control" id="adresa" />
                 <small class="text-danger" id="adresa-greska"></small>
               </div>
               <div class="form-group">
                 <label for="telefon">Telefon:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="telefon"
-                  id="telefon"
-                />
+                <input type="text" class="form-control" id="telefon" />
                 <small class="text-danger" id="telefon-greska"></small>
               </div>
               <div class="form-group">
                 <label for="zanimanje">Zanimanje:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="zanimanje"
-                  id="zanimanje"
-                />
+                <input type="text" class="form-control" id="zanimanje" />
                 <small class="text-danger" id="zanimanje-greska"></small>
               </div>
             </div>
           </div>
         </div>
 
+        <div class="row">
+          <span
+            class="mx-auto justify-content-center mb-3"
+            style="color: white"
+            id="registration-success-indicator"
+          ></span>
+        </div>
+
         <div class="row d-flex justify-content-center">
-          <input
-            type="submit"
+          <button
             class="btn btn-primary mr-3"
             id="confirm-registration-btn"
             onclick="register()"
-            value="Registruj se"
-          />
+          >
+            Registruj se
+          </button>
           <button
             class="btn btn-primary ml-3"
             id="cancel-registration-btn"
@@ -253,6 +197,7 @@
         </div>
       </form>
     </div>
+
     <script src="../js/popup-sections-validation.js"></script>
 
     <script src="../js/festival.js"></script>

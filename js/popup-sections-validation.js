@@ -1,6 +1,9 @@
 let loginPopup = document.getElementById("login-popup");
 
 function openLoginPopup() {
+  document.getElementById("login-form").reset();
+  document.getElementById("korisnicko-ime-greska").textContent = "";
+  document.getElementById("lozinka-greska").textContent = "";
   loginPopup.classList.add("open-popup");
 }
 
@@ -31,13 +34,27 @@ function login() {
   }
 
   if (isFromValid) {
-    loginPopup.classList.remove("open-popup");
+    doLogin(username.trim(), password.trim());
   }
 }
 
 let registrationPopup = document.getElementById("registration-popup");
 
 function openRegistrationPopup() {
+  const registrationForm = document.getElementById("registration-form");
+  registrationForm.reset();
+
+  document.getElementById("reg-korisnicko-ime-greska").textContent = "";
+  document.getElementById("reg-ime-greska").textContent = "";
+  document.getElementById("prezime-greska").textContent = "";
+  document.getElementById("reg-lozinka-greska").textContent = "";
+  document.getElementById("reg-lozinka-potvrda-greska").textContent = "";
+  document.getElementById("email-greska").textContent = "";
+  document.getElementById("datum-rodjenja-greska").textContent = "";
+  document.getElementById("adresa-greska").textContent = "";
+  document.getElementById("telefon-greska").textContent = "";
+  document.getElementById("zanimanje-greska").textContent = "";
+
   registrationPopup.classList.add("open-popup");
 }
 
@@ -46,6 +63,7 @@ function closeRegistrationPopup() {
 }
 
 function register() {
+  // event.preventDefault();
   // Get references to form elements
   const korisnickoImeInput = document.getElementById("reg-korisnicko-ime");
   const imeInput = document.getElementById("reg-ime");
@@ -152,6 +170,128 @@ function register() {
   }
 
   if (isFromValid) {
-    registrationPopup.classList.remove("open-popup");
+    doRegister(
+      korisnickoImeInput.value,
+      imeInput.value,
+      prezimeInput.value,
+      lozinkaInput.value,
+      emailInput.value,
+      datumRodjenjaInput.value,
+      adresaInput.value,
+      telefonInput.value,
+      zanimanjeInput.value
+    );
+  } else {
+    // window.location.href = window.location.href.split("#")[0];
   }
+}
+
+function doLogin(username, password) {
+  const firebaseUrl =
+    "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
+  const korisniciUrl = firebaseUrl + "/korisnici.json";
+  let request = new XMLHttpRequest();
+  request.open("GET", korisniciUrl, true);
+  request.send();
+
+  let korisnici = {};
+  let korisniciIds = [];
+  let loginSuccessIndicator = document.getElementById(
+    "login-success-indicator"
+  );
+
+  request.onreadystatechange = function () {
+    if (request.readyState === 4) {
+      if (request.status === 200) {
+        korisnici = JSON.parse(request.responseText);
+        for (var id in korisnici) {
+          korisniciIds.push(id);
+        }
+        let isUserFound = false;
+        for (let id of korisniciIds) {
+          let korisnik = korisnici[id];
+          if (
+            korisnik.korisnickoIme === username &&
+            korisnik.lozinka === password
+          ) {
+            isUserFound = true;
+            loginSuccessIndicator.textContent = "Uspešno ste se prijavili!";
+            setTimeout(function () {
+              loginSuccessIndicator.textContent = "";
+              closeLoginPopup();
+            }, 2500);
+            break;
+          }
+        }
+        if (!isUserFound) {
+          console.log("Pogrešno korisničko ime ili lozinka!");
+
+          loginSuccessIndicator.textContent =
+            "Pogrešno korisničko ime ili lozinka!";
+        }
+      } else {
+        console.log("Greška prilikom prijave!");
+
+        loginSuccessIndicator.textContent = "Greška prilikom prijave!";
+        setTimeout(function () {
+          loginSuccessIndicator.textContent = "";
+        }, 2500);
+      }
+    }
+  };
+}
+
+function doRegister(
+  korisnickoIme,
+  ime,
+  prezime,
+  lozinka,
+  email,
+  datumRodjenja,
+  adresa,
+  telefon,
+  zanimanje
+) {
+  let korisnikZaRegistraciju = {
+    korisnickoIme: korisnickoIme,
+    ime: ime,
+    prezime: prezime,
+    lozinka: lozinka,
+    email: email,
+    datumRodjenja: datumRodjenja,
+    adresa: adresa,
+    telefon: telefon,
+    zanimanje: zanimanje,
+  };
+
+  let request = new XMLHttpRequest();
+  let firebaseUrl =
+    "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
+  let korisniciUrlreg = firebaseUrl + "/korisnici.json";
+  request.open("POST", korisniciUrlreg, true);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.send(JSON.stringify(korisnikZaRegistraciju));
+
+  request.onreadystatechange = function () {
+    if (request.readyState === 4)
+      if (request.status === 200) {
+        console.log("Uspešno ste se registrovali!");
+        let registrationSuccessIndicator = document.getElementById(
+          "registration-success-indicator"
+        );
+        registrationSuccessIndicator.textContent =
+          "Uspešno ste se registrovali!";
+        setTimeout(function () {
+          registrationSuccessIndicator.textContent = "";
+          closeRegistrationPopup();
+        }, 2500);
+      } else {
+        let registrationSuccessIndicator = document.getElementById(
+          "registration-success-indicator"
+        );
+        registrationSuccessIndicator.textContent =
+          "Greska prilikom registracije!";
+        console.log("Greška prilikom registracije!");
+      }
+  };
 }
