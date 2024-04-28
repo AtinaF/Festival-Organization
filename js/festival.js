@@ -1,12 +1,9 @@
 var firebaseUrl =
   "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
 
-var festivalId = window.location.href.split("?")[1].split("&")[0].split("=")[1];
-var festivaliId = window.location.href
-  .split("?")[1]
-  .split("&")[1]
-  .split("=")[1];
 var festivaliUrl = firebaseUrl + "/festivali/";
+var festivalId = localStorage.getItem("festivalId");
+var festivaliId = localStorage.getItem("festivaliId");
 
 var festival = {};
 

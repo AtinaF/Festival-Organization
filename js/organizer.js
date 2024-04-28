@@ -1,14 +1,14 @@
 var firebaseUrl =
   "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
 
-var festivalId = window.location.href.split("?")[1].split("=")[1];
+var organizatorId = localStorage.getItem("organizatorId");
 var organizatorUrl =
-  firebaseUrl + "/organizatoriFestivala/" + festivalId + ".json";
-var korisniciUrl = firebaseUrl + "/festivali/";
+  firebaseUrl + "/organizatoriFestivala/" + organizatorId + ".json";
+var festivaliUrl = firebaseUrl + "/festivali/";
 
 var organizator = {};
-var korisnici = {};
-var korisniciIds = [];
+var festivali = {};
+var festivaliIds = [];
 
 Promise.all([loadOrganizator()])
   .then(() => {
@@ -51,17 +51,17 @@ function loadOrganizator() {
 function loadFestivali(festivaliId) {
   return new Promise((resolve, reject) => {
     var request = new XMLHttpRequest();
-    request.open("GET", korisniciUrl + festivaliId + ".json", true);
+    request.open("GET", festivaliUrl + festivaliId + ".json", true);
     request.send();
     request.onreadystatechange = function () {
       if (request.readyState === 4) {
         // done
         if (request.status === 200) {
           // success
-          korisnici = JSON.parse(request.responseText);
+          festivali = JSON.parse(request.responseText);
 
-          for (var id in korisnici) {
-            korisniciIds.push(id);
+          for (var id in festivali) {
+            festivaliIds.push(id);
           }
           resolve(); // Resolve the promise
         } else {
@@ -201,7 +201,7 @@ function showFestival() {
   var festivaliRow = document.createElement("div");
   festivaliRow.classList.add("row");
 
-  for (var id of korisniciIds) {
+  for (var id of festivaliIds) {
     var colDiv = document.createElement("div");
     colDiv.classList.add("col-md-3", "col-sm-12");
 
@@ -209,7 +209,7 @@ function showFestival() {
     cardDiv.classList.add("card", "my-3");
 
     var img = document.createElement("img");
-    img.src = korisnici[id].slike[0];
+    img.src = festivali[id].slike[0];
     // img.classList.add("card-img-top");
     img.alt = "Festival Image";
     // img.height = "30%";
@@ -219,25 +219,13 @@ function showFestival() {
 
     var title = document.createElement("h5");
     title.classList.add("card-title");
-    title.innerText = korisnici[id].naziv;
+    title.innerText = festivali[id].naziv;
 
     var type = document.createElement("p");
     type.classList.add("card-text");
-    type.innerText = "Tip festivala: " + korisnici[id].tip;
+    type.innerText = "Tip festivala: " + festivali[id].tip;
 
-    var detailsLink = document.createElement("a");
-    detailsLink.href =
-      "festival.html?festivalId=" +
-      id +
-      "&festivaliId=" +
-      organizator.festivali;
-    detailsLink.classList.add(
-      "btn",
-      "btn-primary",
-      "d-flex",
-      "justify-content-center"
-    );
-    detailsLink.innerText = "Details";
+    var detailsLink = createDetailsButton(id);
 
     // Append elements
     cardBodyDiv.appendChild(title);
@@ -255,4 +243,28 @@ function showFestival() {
 
     organizatorContainer.appendChild(festivaliContainer);
   }
+}
+
+function createDetailsButton(id) {
+  var detailsBtn = document.createElement("button");
+  detailsBtn.classList.add(
+    "btn",
+    "btn-primary",
+    "d-flex",
+    "justify-content-center"
+  );
+  detailsBtn.textContent = "Details";
+  detailsBtn.addEventListener("click", () => DetailsClicked(id));
+  return detailsBtn;
+}
+
+function DetailsClicked(festivalId) {
+  // detailsLink.href =
+  //   "festival.html?festivalId=" +
+  //   id +
+  //   "&festivaliId=" +
+  //   organizator.festivali;
+  localStorage.setItem("festivalId", festivalId);
+  localStorage.setItem("festivaliId", organizator.festivali);
+  window.location.href = "festival.html";
 }

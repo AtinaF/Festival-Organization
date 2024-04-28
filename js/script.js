@@ -1,9 +1,9 @@
 var firebaseUrl =
   "https://web-design-9-default-rtdb.europe-west1.firebasedatabase.app";
 
-var korisniciUrl = firebaseUrl + "/korisnici" + ".json";
+var festivaliUrl = firebaseUrl + "/korisnici" + ".json";
 var organizatoriFestivalaUrl = firebaseUrl + "/organizatoriFestivala" + ".json";
-var korisniciUrl = firebaseUrl + "/festivali" + ".json";
+var festivaliUrl = firebaseUrl + "/festivali" + ".json";
 
 // //ovakav zahtev se blokira sa CORS policy
 // var firebaseGradivniUrl =
@@ -12,17 +12,14 @@ var korisniciUrl = firebaseUrl + "/festivali" + ".json";
 // // + korisnici
 // // + organizatoriFestivala
 
-var korisnici = {};
-var korisniciIds = [];
+var festivali = {};
+var festivaliIds = [];
 
 var organizatoriFestivala = {};
 var organizatoriFestivalaIds = [];
 
-var korisnici = {};
-var korisniciIds = [];
-
-// var loadButton = document.getElementById("loadButton");
-// loadButton.addEventListener("click", loadData);
+var festivali = {};
+var festivaliIds = [];
 
 Promise.all([loadOrganizatori()])
   .then(() => {
@@ -83,15 +80,7 @@ function showOrganizatori() {
     cardText.classList.add("card-text");
     cardText.innerText = organizatoriFestivala[id].adresa;
 
-    var detailsBtn = document.createElement("a");
-    detailsBtn.href = "organizer.html?organizerId=" + id;
-    detailsBtn.classList.add(
-      "btn",
-      "btn-primary",
-      "d-flex",
-      "justify-content-center"
-    );
-    detailsBtn.innerText = "Detalji";
+    var detailsBtn = createDetailsButton(id);
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
@@ -101,4 +90,22 @@ function showOrganizatori() {
     outerDiv.appendChild(cardDiv);
     sviOrganizatori.appendChild(outerDiv);
   }
+}
+
+function createDetailsButton(id) {
+  let detailsBtn = document.createElement("button");
+  detailsBtn.addEventListener("click", () => DetailsClicked(id));
+  detailsBtn.classList.add(
+    "btn",
+    "btn-primary",
+    "d-flex",
+    "justify-content-center"
+  );
+  detailsBtn.textContent = "Detalji";
+  return detailsBtn;
+}
+
+function DetailsClicked(id) {
+  localStorage.setItem("organizatorId", id);
+  window.location.href = "organizer.html";
 }
