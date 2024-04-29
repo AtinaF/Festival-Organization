@@ -29,6 +29,9 @@ function login() {
   if (password.trim() === "") {
     passwordError.textContent = "Lozinka je obavezna!";
     isFromValid = false;
+  } else if (password.trim().length < 8) {
+    passwordError.textContent = "Lozinka mora imati najmanje 8 karaktera!";
+    isFromValid = false;
   } else {
     passwordError.textContent = "";
   }

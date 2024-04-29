@@ -119,6 +119,9 @@ function onEdit() {
   if (email.trim() === "") {
     emailGreska.textContent = "Polje ne sme biti prazno";
     valid = false;
+  } else if (!email.includes("@")) {
+    emailGreska.textContent = "Email mora sadržati @";
+    valid = false;
   } else {
     emailGreska.textContent = "";
   }
@@ -172,6 +175,10 @@ function onEdit() {
     lozinka.trim() !== potvrdaLozinke.trim()
   ) {
     potvrdaLozinkeGreska.textContent = "Lozinke se ne poklapaju";
+    valid = false;
+  } else if (lozinka.trim().length < 8) {
+    potvrdaLozinkeGreska.textContent =
+      "Lozinka mora imati najmanje 8 karaktera";
     valid = false;
   } else {
     potvrdaLozinkeGreska.textContent = "";
