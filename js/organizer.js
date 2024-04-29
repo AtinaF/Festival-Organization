@@ -28,7 +28,7 @@ Promise.all([loadOrganizator()])
         Promise.all([loadFestivali(organizator.festivali)])
             .then(() => {
                 console.log("All festivali data loaded successfully");
-                showFestival();
+                showFestival("", "");
             })
             .catch((error) => {
                 console.error("Error loading data:", error);
@@ -86,7 +86,7 @@ function loadFestivali(festivaliId) {
     });
 }
 
-function showFestival() {
+function showFestival(nameSearchValue, typeSearchValue) {
     var organizatorContainer = document.getElementById("organizator-container");
 
     var organizatorNameRow = document.createElement("div");
@@ -276,10 +276,12 @@ function showFestival() {
             var title = document.createElement("h5");
             title.classList.add("card-title");
             title.innerText = searchResultFestivali[id].naziv;
+            title.innerHTML = highlightKeyword(title.innerText, nameSearchValue);
 
             var type = document.createElement("p");
             type.classList.add("card-text");
             type.innerText = "Tip festivala: " + searchResultFestivali[id].tip;
+            type.innerHTML = highlightKeyword(type.innerText, typeSearchValue);
 
             var detailsLink = createDetailsButton(id);
 
@@ -328,8 +330,8 @@ function showFestival() {
     searchCombo.id = "searchTypeCombo";
     var tipOptions = [
         "Izaberi tip",
-        "Muzicki",
-        "Umetnicki",
+        "Muzički",
+        "Umetnički",
         "Filmski",
         "Gastronomski",
         "Edukativni",
@@ -427,7 +429,7 @@ function searchFestival() {
 
     // festivali = noviFestivali;
     // festivaliIds = noviFestivaliIds;
-    showFestival();
+    showFestival(searchNameValue, searchTypeValue);
 }
 
 function createDetailsButton(id) {
@@ -447,4 +449,15 @@ function DetailsClicked(festivalId) {
     localStorage.setItem("festivalId", festivalId);
     localStorage.setItem("festivaliId", organizator.festivali);
     window.location.href = "festival.html";
+}
+
+function highlightKeyword(text, searchTerm) {
+    // Create a regular expression with the search term
+    var regex = new RegExp("(" + searchTerm + ")", "gi");
+
+    // Replace the search term with the same term wrapped in a span with a red background
+    return text.replace(
+        regex,
+        '<span style="background-color: orange;">$1</span>'
+    );
 }
